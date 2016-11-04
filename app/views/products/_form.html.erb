@@ -1,0 +1,22 @@
+<div class="container">
+  <div class="row">
+    <div class="col-md-6 col-md-offset-3">
+      <h1 class="text-center">Nuevo Producto</h1>
+      <%= form_for (@product) do |product|  %>
+        <div class="form-group">
+          <%= product.label 'Nombre' %>
+          <%= product.text_field :name, class: 'form-control' %>
+        </div>
+        <div class="form-group">
+          <%= product.label 'Precio' %>
+          <%= product.number_field :price, class: 'form-control' %>
+        </div>
+        <%=collection_check_boxes(:product, :category_ids, Category.all, :id, :name)  %>
+        <div class="row">
+          <%= product.submit 'Crear Producto', class: 'btn btn-success' %>
+          <%= link_to 'Cancelar', products_path, class: 'btn btn-danger' %>
+        </div>
+      <% end %>
+    </div>
+  </div>
+</div>
